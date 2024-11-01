@@ -1,5 +1,11 @@
 package edu.grinnell.csc207;
 
-public interface Character {
-    public void move();
+public class Character extends GameObject{
+    public Character() {
+        super();
+    }
+
+    public void move() { 
+        
+    }
 }
