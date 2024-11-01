@@ -24,4 +24,12 @@ public class Vector2D {
     public void setY(int val) { 
         this.y = val;
     }
+
+    public void incrementX(int val) { 
+        this.x += val;
+    }
+
+    public void incrementY(int val) { 
+        this.y += val;
+    }
 }

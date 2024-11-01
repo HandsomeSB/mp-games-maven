@@ -1,9 +1,19 @@
 package edu.grinnell.csc207;
 
+import edu.grinnell.csc207.util.Matrix;
+import edu.grinnell.csc207.util.MatrixV0;
+
 public class Game {
     // contains board, winning condition, facilitation
+    private Matrix<java.lang.Character> board;
 
-    public Game() {
+    private static Game instance = new Game();
+    public static Game getInstance() {
+        return Game.instance;
+    }
+
+    private Game() {
+        this.board = new MatrixV0<java.lang.Character>(8, 8, '.');
         init();
     }
 
@@ -19,5 +29,9 @@ public class Game {
      */
     public void update() { 
 
+    }
+
+    public Matrix<java.lang.Character> getBoard() { 
+        return this.board;
     }
 }
