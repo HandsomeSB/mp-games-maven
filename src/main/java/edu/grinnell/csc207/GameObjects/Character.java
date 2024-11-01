@@ -1,4 +1,4 @@
-package edu.grinnell.csc207;
+package edu.grinnell.csc207.GameObjects;
 
 public class Character extends GameObject{
     public Character() {

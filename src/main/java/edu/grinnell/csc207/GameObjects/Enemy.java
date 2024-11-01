@@ -1,4 +1,4 @@
-package edu.grinnell.csc207;
+package edu.grinnell.csc207.GameObjects;
 
 public class Enemy extends Character {
     private Character target;
@@ -9,6 +9,7 @@ public class Enemy extends Character {
     }
 
     private void move(Character target) { 
+        //look for valid moves 
         if(target.position.getX() > this.position.getX()) { 
             this.position.incrementX(1);
         } else if(target.position.getY() > this.position.getY()) { 
