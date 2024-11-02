@@ -1,8 +1,22 @@
 package edu.grinnell.csc207;
 import java.util.Scanner;
+
+import edu.grinnell.csc207.GameObjects.GameObject;
+import edu.grinnell.csc207.util.Matrix;
+
 import java.io.PrintWriter;
 
 public class Main {
+    public static void display(PrintWriter pen) { 
+        Matrix<Character> board = Game.getInstance().getBoard();
+        for(int i = 0; i < board.height(); ++i) { 
+            for(int j = 0; j < board.width(); ++j) { 
+                pen.print(board.get(i, j));
+                pen.print(" ");
+            }
+            pen.println();
+        }
+    }
     public static void main(String[] args) {
         PrintWriter pen = new PrintWriter(System.out, true);
         Scanner scan = new Scanner(System.in);
@@ -31,9 +45,11 @@ public class Main {
 
         
 
-        //while loop
-        //take input
-        //call update
-        //print board
+        
+        {//while
+            //input
+            Game.getInstance().update();
+            display(pen);
+        }
     } // main(String[])
 } // class Main
