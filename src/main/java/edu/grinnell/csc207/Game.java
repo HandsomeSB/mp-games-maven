@@ -3,8 +3,10 @@ package edu.grinnell.csc207;
 import java.util.ArrayList;
 
 import edu.grinnell.csc207.GameObjects.GameObject;
+import edu.grinnell.csc207.GameObjects.Player;
 import edu.grinnell.csc207.util.Matrix;
 import edu.grinnell.csc207.util.MatrixV0;
+import edu.grinnell.csc207.util.Vector2D;
 
 public class Game {
     // contains board, winning condition, facilitation
@@ -26,7 +28,12 @@ public class Game {
      */
     private void init() { 
         //place character
+        Player player = new Player(new Vector2D(0, 0),'P');
+        this.gameObjects.add(player);
         //place walls
+
+        //Initial rendering
+        renderBoard();
     }
     /**
      * Represent a single turn of the game
@@ -43,8 +50,13 @@ public class Game {
     }
 
     private void renderBoard() { 
+        this.board.fillRegion(0, 0, this.board.height(), this.board.width(), '.');
         for(GameObject go : this.gameObjects) { 
-            this.board.set(go.position.getY(), go.position.getX(), go.character);
+            for(int i = 0; i < go.size.getX(); ++i) { 
+                for(int j = 0; j < go.size.getY(); ++j) { 
+                    this.board.set(go.position.getY() + i, go.position.getX() + j, go.character);
+                }
+            }
         }
     }
 

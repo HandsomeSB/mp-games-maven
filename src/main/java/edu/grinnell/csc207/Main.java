@@ -2,6 +2,7 @@ package edu.grinnell.csc207;
 import java.util.Scanner;
 
 import edu.grinnell.csc207.GameObjects.GameObject;
+import edu.grinnell.csc207.UI.KeyboardInput;
 import edu.grinnell.csc207.util.Matrix;
 
 import java.io.PrintWriter;
@@ -46,10 +47,10 @@ public class Main {
         
 
         
-        {//while
-            //input
-            Game.getInstance().update();
+        while (!KeyboardInput.getInstance().getFullInput().equals("quit")){//while
             display(pen);
+            KeyboardInput.getInstance().promptAndRecordInput();
+            Game.getInstance().update();
         }
     } // main(String[])
 } // class Main
