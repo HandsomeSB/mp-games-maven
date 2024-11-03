@@ -32,4 +32,8 @@ public class Vector2D {
     public void incrementY(int val) { 
         this.y += val;
     }
+
+    public int manhattanDist(Vector2D other) { 
+        return Math.abs(this.x - other.x) + Math.abs(this.y - other.y);
+    }
 }

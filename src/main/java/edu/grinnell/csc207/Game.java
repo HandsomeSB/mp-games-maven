@@ -2,6 +2,7 @@ package edu.grinnell.csc207;
 
 import java.util.ArrayList;
 
+import edu.grinnell.csc207.GameObjects.Enemy;
 import edu.grinnell.csc207.GameObjects.GameObject;
 import edu.grinnell.csc207.GameObjects.Player;
 import edu.grinnell.csc207.util.Matrix;
@@ -30,6 +31,9 @@ public class Game {
         //place character
         Player player = new Player(new Vector2D(0, 0),'P');
         this.gameObjects.add(player);
+
+        Enemy enemy = new Enemy(new Vector2D(7, 0), 'E', player);
+        this.gameObjects.add(enemy);
         //place walls
 
         //Initial rendering
