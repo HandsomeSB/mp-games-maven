@@ -33,8 +33,8 @@ public class Main {
                 * -s key - move down on the board
                 * -d key - move right on the board
 
-                The goal of the game is for you ("O") to eat as much food ("*")
-                as you are being chased by the enemy ("X") before getting
+                The goal of the game is for you ("P") to eat as much food ("*")
+                as you are being chased by the enemy ("E") before getting
                 caught.
 
                 Here's how it works: you move one space for each turn using the keys
@@ -44,13 +44,12 @@ public class Main {
                 spot on the board.
                 """);
 
-        
+        Game game = Game.getInstance();
 
-        
         while (!KeyboardInput.getInstance().getFullInput().equals("quit")){//while
             display(pen);
             KeyboardInput.getInstance().promptAndRecordInput();
-            Game.getInstance().update();
+            game.update();
         }
     } // main(String[])
 } // class Main

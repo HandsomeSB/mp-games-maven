@@ -26,12 +26,13 @@ public class KeyboardInput {
         lastRecordedInput = scan.nextLine();
     }
 
-    public Character getInput() { 
-        return this.lastRecordedInput.charAt(0);
-    }
+    public Character getInput() {
+        if (! this.lastRecordedInput.isEmpty())
+            return this.lastRecordedInput.charAt(0);
+            return Character.valueOf(' ');
+        }
 
     public String getFullInput() { 
         return this.lastRecordedInput;
     }
-
 }
