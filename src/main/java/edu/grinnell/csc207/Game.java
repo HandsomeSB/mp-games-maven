@@ -14,7 +14,7 @@ import java.util.Random;
 public class Game {
     // contains board, winning condition, facilitation
     private Matrix<java.lang.Character> board;
-    private ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
+    private ArrayList<GameObject> gameObjects = GameObject.getGameObjects();
 
     private static Game instance = new Game();
     private Objective objective;
@@ -38,13 +38,10 @@ public class Game {
     private void init() { 
         //place character
         this.player = new Player(new Vector2D(0, 0),'P', this.board.height(), this.board.width());
-        this.gameObjects.add(this.player);
 
         this.enemy = new Enemy(new Vector2D(7, 0), 'E', this.player, this.board.height(), this.board.width());
-        this.gameObjects.add(enemy);
         
         this.objective = new Objective(new Vector2D(2, 2), player, '*');
-        this.gameObjects.add(objective);
 
         //Initial rendering
         renderBoard();

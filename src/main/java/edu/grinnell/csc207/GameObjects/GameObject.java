@@ -1,7 +1,11 @@
 package edu.grinnell.csc207.GameObjects;
+import java.util.ArrayList;
+
 import edu.grinnell.csc207.util.Vector2D;
 
 public class GameObject {
+    private static ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
+
     public Vector2D position;
     public Vector2D size;
     public Character character;
@@ -14,6 +18,8 @@ public class GameObject {
         this.character = chara;
         this.boardHeight = boardHeight;
         this.boardWidth = boardWidth;
+
+        GameObject.gameObjects.add(this);
     }
 
     public GameObject(Vector2D pos, Character chara, int boardHeight, int boardWidth) { 
@@ -41,5 +47,9 @@ public class GameObject {
 
     public void update() { 
 
+    }
+
+    public static ArrayList<GameObject> getGameObjects() { 
+        return GameObject.gameObjects;
     }
 }
