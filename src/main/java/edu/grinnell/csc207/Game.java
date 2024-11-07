@@ -53,6 +53,14 @@ public class Game {
      */
     public void update() { 
         updateGameObjects();
+        if (this.player.collidesWith(this.enemy)) {
+            this.gameOver = true;
+        }
+        if (this.player.collidesWith(this.objective)) {
+            this.score++;
+            this.gameObjects.remove(this.objective);
+            generateObjective();
+        }
         renderBoard();
     }
 
@@ -63,16 +71,6 @@ public class Game {
     }
 
     private void renderBoard() { 
-        if (this.player.position.getX() == this.enemy.position.getX() && this.player.position.getY() == this.enemy.position.getY()) {
-            this.gameOver = true;
-            System.out.println("GAME OVER!");
-        }
-        if (this.player.position.getX() == this.objective.position.getX() && this.player.position.getY() == this.objective.position.getY()) {
-            this.score++;
-            this.gameObjects.remove(this.objective);
-            generateObjective();
-        }
-        System.out.println("Score: " + this.score);
         this.board.fillRegion(0, 0, this.board.height(), this.board.width(), '.');
         for(GameObject go : this.gameObjects) { 
             for(int i = 0; i < go.size.getX(); ++i) { 
@@ -97,5 +95,9 @@ public class Game {
 
     public Matrix<java.lang.Character> getBoard() { 
         return this.board;
+    }
+
+    public int getScore() { 
+        return this.score;
     }
 }

@@ -10,6 +10,7 @@ import java.io.PrintWriter;
 public class Main {
     public static void display(PrintWriter pen) { 
         Matrix<Character> board = Game.getInstance().getBoard();
+        pen.println(Game.getInstance().getScore());
         for(int i = 0; i < board.height(); ++i) { 
             for(int j = 0; j < board.width(); ++j) { 
                 pen.print(board.get(i, j));
@@ -45,11 +46,13 @@ public class Main {
                 """);
 
         Game game = Game.getInstance();
-
+        display(pen);
         while (!KeyboardInput.getInstance().getFullInput().equals("quit") && !game.getGameOver()){//while
-            display(pen);
             KeyboardInput.getInstance().promptAndRecordInput();
             game.update();
+            display(pen);
         }
+
+        pen.println("GAME OVER!");
     } // main(String[])
 } // class Main
