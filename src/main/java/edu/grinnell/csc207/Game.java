@@ -43,7 +43,8 @@ public class Game {
         this.enemy = new Enemy(new Vector2D(7, 0), 'E', this.player, this.board.height(), this.board.width());
         this.gameObjects.add(enemy);
         
-        generateObjective();
+        this.objective = new Objective(new Vector2D(2, 2), player, '*');
+        this.gameObjects.add(objective);
 
         //Initial rendering
         renderBoard();
@@ -55,11 +56,6 @@ public class Game {
         updateGameObjects();
         if (this.player.collidesWith(this.enemy)) {
             this.gameOver = true;
-        }
-        if (this.player.collidesWith(this.objective)) {
-            this.score++;
-            this.gameObjects.remove(this.objective);
-            generateObjective();
         }
         renderBoard();
     }
@@ -81,14 +77,6 @@ public class Game {
         }
     }
 
-    private void generateObjective() {
-        Random rand = new Random();
-        int objX = rand.nextInt(1, 7);
-        int objY = rand.nextInt(0, 8);
-        this.objective = new Objective(new Vector2D(objX, objY), '*');
-        this.gameObjects.add(this.objective);
-    }
-
     public boolean getGameOver() {
         return this.gameOver;
     }
@@ -99,5 +87,9 @@ public class Game {
 
     public int getScore() { 
         return this.score;
+    }
+
+    public void setScore(int val) {
+        this.score = val;
     }
 }
