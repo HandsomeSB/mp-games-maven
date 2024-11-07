@@ -46,7 +46,7 @@ public class Main {
 
         Game game = Game.getInstance();
 
-        while (!KeyboardInput.getInstance().getFullInput().equals("quit")){//while
+        while (!KeyboardInput.getInstance().getFullInput().equals("quit") && !game.getGameOver()){//while
             display(pen);
             KeyboardInput.getInstance().promptAndRecordInput();
             game.update();
