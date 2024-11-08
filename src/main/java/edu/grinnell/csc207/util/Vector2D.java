@@ -9,6 +9,7 @@ package edu.grinnell.csc207.util;
 public class Vector2D {
   /** X Coordinate. */
   private int x;
+
   /** Y Coordinate. */
   private int y;
 
@@ -21,7 +22,7 @@ public class Vector2D {
   public Vector2D(int initX, int initY) {
     this.x = initX;
     this.y = initY;
-  } //Vector2D(int, int)
+  } // Vector2D(int, int)
 
   /**
    * Get the X coordinate.

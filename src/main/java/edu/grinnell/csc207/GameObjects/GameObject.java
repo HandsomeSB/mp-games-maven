@@ -13,14 +13,19 @@ import java.util.ArrayList;
 public class GameObject {
   /** ArrayList of all game objects. */
   private static ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
+
   /** Position of game object. */
   private Vector2D position;
+
   /** Size of game object. */
   private Vector2D size;
+
   /** The character to represent the game object. */
   private Character character;
+
   /** Height of the board. */
   private int boardHeight;
+
   /** Width of the board. */
   private int boardWidth;
 
@@ -83,39 +88,43 @@ public class GameObject {
   } // collidesWith(GameObject)
 
   /** The standard update method for all game objects. */
-  public void update() {} // update()
+  public void update() { } // update()
 
   /**
    * Get position.
+   *
    * @return position of game object.
    */
-  public Vector2D getPosition() { 
+  public Vector2D getPosition() {
     return this.position;
-  }
+  } // getPosition()
 
   /**
    * Set position.
-   * @param val new value. 
+   *
+   * @param val new value.
    */
   public void setPosition(Vector2D val) {
     this.position = val;
-  }
+  } // setPosition(Vector2D)
 
   /**
    * Get size.
+   *
    * @return size of game object.
    */
-  public Vector2D getSize() { 
+  public Vector2D getSize() {
     return this.size;
-  }
+  } // getSize()
 
   /**
-   * Get character. 
-   * @return character of game object. 
+   * Get character.
+   *
+   * @return character of game object.
    */
-  public Character getCharacter() { 
+  public Character getCharacter() {
     return this.character;
-  }
+  } // getCharacter()
 
   /**
    * Our game objects.
@@ -126,13 +135,14 @@ public class GameObject {
     return GameObject.gameObjects;
   } // getGameObjects()
 
-    /**
-   * Return true if position is out of bound
+  /**
+   * Return true if position is out of bound.
+   *
    * @param pos Position to check
    * @param game Game instance
    * @return true if position is out of bound, false if valid
    */
-  public static boolean isOutOfBound(Vector2D pos, Game game) { 
+  public static boolean isOutOfBound(Vector2D pos, Game game) {
     int width = game.getBoard().width();
     int height = game.getBoard().height();
     return pos.getX() < 0 || pos.getX() >= width || pos.getY() < 0 || pos.getY() >= height;

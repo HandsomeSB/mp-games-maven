@@ -1,10 +1,9 @@
 package edu.grinnell.csc207.GameObjects;
 
-import java.io.PrintWriter;
-
 import edu.grinnell.csc207.Game;
 import edu.grinnell.csc207.UI.KeyboardInput;
 import edu.grinnell.csc207.util.Vector2D;
+import java.io.PrintWriter;
 
 /**
  * The player game piece.
@@ -61,12 +60,12 @@ public class Player extends GameObject {
         break;
     } // switch
 
-    if(GameObject.isOutOfBound(nextPos, Game.getInstance())) { 
+    if (GameObject.isOutOfBound(nextPos, Game.getInstance())) {
       PrintWriter pen = new PrintWriter(System.out, true);
       pen.println("Invalid Input");
       pen.flush();
-    } else { 
+    } else { // if
       this.setPosition(nextPos);
-    }
+    } // else
   } // update()
 } // class Player

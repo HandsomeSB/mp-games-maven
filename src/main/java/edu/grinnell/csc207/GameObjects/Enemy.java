@@ -38,10 +38,7 @@ public class Enemy extends GameObject {
     } // for
   } // update()
 
-  /**
-   * Moves the enemy to a different spot on the board depending on position of player.
-   *
-   */
+  /** Moves the enemy to a different spot on the board depending on position of player. */
   private void move() {
     ArrayList<Vector2D> candidatePositions =
         new ArrayList<Vector2D>(

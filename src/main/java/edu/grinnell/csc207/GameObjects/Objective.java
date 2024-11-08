@@ -11,7 +11,7 @@ import java.util.Random;
  * @author Mina Bakrac
  */
 public class Objective extends GameObject {
-
+  /** The player. */
   Player player;
 
   /**

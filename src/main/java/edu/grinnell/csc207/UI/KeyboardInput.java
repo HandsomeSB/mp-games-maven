@@ -24,8 +24,10 @@ public class KeyboardInput {
 
   /** Last Recorded Input. */
   private String lastRecordedInput;
+
   /** PrintWriter. */
   private PrintWriter pen = new PrintWriter(System.out, true);
+
   /** Scanner. */
   private Scanner scan = new Scanner(System.in);
 
@@ -42,6 +44,7 @@ public class KeyboardInput {
 
   /**
    * Returns the first letter of the input.
+   *
    * @return first letter of the last recorded input
    */
   public Character getInput() {

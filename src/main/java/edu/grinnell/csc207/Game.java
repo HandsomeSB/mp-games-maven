@@ -16,25 +16,42 @@ import java.util.ArrayList;
  * @author Mina Bakrac
  */
 public class Game {
-  // contains board, winning condition, facilitation
+  /** The board. */
   private Matrix<java.lang.Character> board;
+
+  /** List of game object. */
   private ArrayList<GameObject> gameObjects = GameObject.getGameObjects();
 
+  /** Singleton instance. */
   private static Game instance = new Game();
+
+  /** Objective. */
   private Objective objective;
+
+  /** Player Object. */
   private Player player;
+
+  /** Enemy Object. */
   private Enemy enemy;
+
+  /** Score. */
   private int score = 0;
+
+  /** True game is over. */
   private boolean gameOver = false;
 
+  /**
+   * get instance.
+   * @return the instance.
+   */
   public static Game getInstance() {
     return Game.instance;
-  }
+  } // getInstance()
 
   private Game() {
     this.board = new MatrixV0<java.lang.Character>(8, 8, '.');
     init();
-  }
+  } // Game()
 
   /** Initialize the board and pieces. */
   private void init() {
@@ -47,7 +64,7 @@ public class Game {
     renderBoard();
   } // init()
 
-  /** Represent a single turn of the game */
+  /** Represent a single turn of the game. */
   public void update() {
     updateGameObjects();
     if (this.player.collidesWith(this.enemy)) {
@@ -56,20 +73,21 @@ public class Game {
     renderBoard();
   } // update()
 
-  /** Updates all the game objects */
+  /** Updates all the game objects. */
   private void updateGameObjects() {
     for (GameObject go : this.gameObjects) {
       go.update();
     } // for
   } // updateGameObjects()
 
-  /** Make the board */
+  /** Make the board. */
   private void renderBoard() {
     this.board.fillRegion(0, 0, this.board.height(), this.board.width(), '.');
     for (GameObject go : this.gameObjects) {
       for (int i = 0; i < go.getSize().getX(); ++i) {
         for (int j = 0; j < go.getSize().getY(); ++j) {
-          this.board.set(go.getPosition().getY() + i, go.getPosition().getX() + j, go.getCharacter());
+          this.board.set(
+              go.getPosition().getY() + i, go.getPosition().getX() + j, go.getCharacter());
         } // for
       } // for
     } // for
