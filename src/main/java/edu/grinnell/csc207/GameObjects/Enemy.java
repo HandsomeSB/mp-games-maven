@@ -33,7 +33,7 @@ public class Enemy extends GameObject {
   /** Updates the position of the ememy. */
   @Override
   public void update() {
-    for (int i = 0; i < 1; ++i) {
+    for (int i = 0; i < 2; ++i) {
       this.move();
     } // for
   } // update()

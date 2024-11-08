@@ -1,5 +1,7 @@
 package edu.grinnell.csc207.GameObjects;
 
+import java.io.PrintWriter;
+
 import edu.grinnell.csc207.Game;
 import edu.grinnell.csc207.UI.KeyboardInput;
 import edu.grinnell.csc207.util.Vector2D;
@@ -41,37 +43,30 @@ public class Player extends GameObject {
   @Override
   public void update() {
     char move = KeyboardInput.getInstance().getInput();
+    Vector2D nextPos = new Vector2D(this.getPosition().getX(), this.getPosition().getY());
     switch (move) {
       case 'w':
-        if (this.getPosition().getY() - 1 < 0) {
-          System.out.println("Invalid movement");
-          return;
-        } // if
-        this.getPosition().incrementY(-1);
+        nextPos.incrementY(-1);
         break;
       case 'a':
-        if (this.getPosition().getX() - 1 < 0) {
-          System.out.println("Invalid movement");
-          return;
-        } // if
-        this.getPosition().incrementX(-1);
+        nextPos.incrementX(-1);
         break;
       case 's':
-        if (this.getPosition().getY() + 1 >= Game.getInstance().getBoard().height()) {
-          System.out.println("Invalid movement");
-          return;
-        } // if
-        this.getPosition().incrementY(1);
+        nextPos.incrementY(1);
         break;
       case 'd':
-        if (this.getPosition().getX() + 1 >= Game.getInstance().getBoard().width()) {
-          System.out.println("Invalid movement");
-          return;
-        } // if
-        this.getPosition().incrementX(1);
+        nextPos.incrementX(1);
         break;
       default:
         break;
     } // switch
+
+    if(GameObject.isOutOfBound(nextPos, Game.getInstance())) { 
+      PrintWriter pen = new PrintWriter(System.out, true);
+      pen.println("Invalid Input");
+      pen.flush();
+    } else { 
+      this.setPosition(nextPos);
+    }
   } // update()
 } // class Player
