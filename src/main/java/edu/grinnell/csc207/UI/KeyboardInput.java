@@ -10,47 +10,43 @@ import java.util.Scanner;
  * @author Mina Bakrac
  */
 public class KeyboardInput {
-    private static KeyboardInput instance = new KeyboardInput();
+  private static KeyboardInput instance = new KeyboardInput();
 
-    /**
-     * Get instance of keyboard input.
-     *
-     * @return instance.
-     */
-    public static KeyboardInput getInstance() {
-        return instance;
-    } // getInstance()
+  /**
+   * Get instance of keyboard input.
+   *
+   * @return instance.
+   */
+  public static KeyboardInput getInstance() {
+    return instance;
+  } // getInstance()
 
-    private String lastRecordedInput;
-    private PrintWriter pen = new PrintWriter(System.out, true);
-    private Scanner scan = new Scanner(System.in);
+  private String lastRecordedInput;
+  private PrintWriter pen = new PrintWriter(System.out, true);
+  private Scanner scan = new Scanner(System.in);
 
+  private KeyboardInput() {
+    lastRecordedInput = "";
+  } // KeyboardInput()
 
-    private KeyboardInput() { 
-        lastRecordedInput = "";
-    } // KeyboardInput()
+  /** Prompt and record the input. */
+  public void promptAndRecordInput() {
+    pen.print(":");
+    pen.flush();
+    lastRecordedInput = scan.nextLine();
+  } // promptAndRecordInput()
 
-    /**
-     * Prompt and record the input.
-     */
-    public void promptAndRecordInput() { 
-        pen.print(":");
-        pen.flush();
-        lastRecordedInput = scan.nextLine();
-    } // promptAndRecordInput()
+  public Character getInput() {
+    if (!this.lastRecordedInput.isEmpty()) return this.lastRecordedInput.charAt(0);
+    return Character.valueOf(' ');
+  } // getInput()
 
-    public Character getInput() {
-        if (! this.lastRecordedInput.isEmpty())
-            return this.lastRecordedInput.charAt(0);
-            return Character.valueOf(' ');
-    } // getInput()
-
-    /**
-     * Returns full last recorded input.
-     *
-     * @return last recorded input.
-     */
-    public String getFullInput() { 
-        return this.lastRecordedInput;
-    }
+  /**
+   * Returns full last recorded input.
+   *
+   * @return last recorded input.
+   */
+  public String getFullInput() {
+    return this.lastRecordedInput;
+  }
 }

@@ -1,11 +1,9 @@
 package edu.grinnell.csc207;
-import java.util.Scanner;
 
-import edu.grinnell.csc207.GameObjects.GameObject;
 import edu.grinnell.csc207.UI.KeyboardInput;
 import edu.grinnell.csc207.util.Matrix;
-
 import java.io.PrintWriter;
+import java.util.Scanner;
 
 /**
  * Main class of our Matrix game.
@@ -14,35 +12,34 @@ import java.io.PrintWriter;
  * @author Mina Bakrac
  */
 public class Main {
-    /**
-     * Display board and pieces.
-     *
-     * @param pen
-     *      Pen for output.
-     */
-    public static void display(PrintWriter pen) { 
-        Matrix<Character> board = Game.getInstance().getBoard();
-        pen.println("Score: " + Game.getInstance().getScore());
-        for(int i = 0; i < board.height(); ++i) { 
-            for(int j = 0; j < board.width(); ++j) { 
-                pen.print(board.get(i, j));
-                pen.print(" ");
-            } // for
-            pen.println();
-        } // for
-    } // display(PrintWriter)
+  /**
+   * Display board and pieces.
+   *
+   * @param pen Pen for output.
+   */
+  public static void display(PrintWriter pen) {
+    Matrix<Character> board = Game.getInstance().getBoard();
+    pen.println("Score: " + Game.getInstance().getScore());
+    for (int i = 0; i < board.height(); ++i) {
+      for (int j = 0; j < board.width(); ++j) {
+        pen.print(board.get(i, j));
+        pen.print(" ");
+      } // for
+      pen.println();
+    } // for
+  } // display(PrintWriter)
 
-    /**
-     * Main method of our game.
-     *
-     * @param args
-     *      Command line arguments.
-     */
-    public static void main(String[] args) {
-        PrintWriter pen = new PrintWriter(System.out, true);
-        Scanner scan = new Scanner(System.in);
-        //print instruction
-        pen.println("""
+  /**
+   * Main method of our game.
+   *
+   * @param args Command line arguments.
+   */
+  public static void main(String[] args) {
+    PrintWriter pen = new PrintWriter(System.out, true);
+    Scanner scan = new Scanner(System.in);
+    // print instruction
+    pen.println(
+        """
                 Welcome to our awesome game!
 
                 Command-line arguments:
@@ -62,13 +59,14 @@ public class Main {
                 you eat the food, your score grows by one and the food moves to a new
                 spot on the board.
                 """);
-        Game game = Game.getInstance();
-        display(pen);
-        while (!KeyboardInput.getInstance().getFullInput().equals("quit") && !game.getGameOver()){//while
-            KeyboardInput.getInstance().promptAndRecordInput();
-            game.update();
-            display(pen);
-        } // while
-        pen.println("GAME OVER!");
-    } // main(String[])
+    Game game = Game.getInstance();
+    display(pen);
+    while (!KeyboardInput.getInstance().getFullInput().equals("quit")
+        && !game.getGameOver()) { // while
+      KeyboardInput.getInstance().promptAndRecordInput();
+      game.update();
+      display(pen);
+    } // while
+    pen.println("GAME OVER!");
+  } // main(String[])
 } // class Main

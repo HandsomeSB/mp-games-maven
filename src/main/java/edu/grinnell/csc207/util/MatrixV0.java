@@ -15,6 +15,7 @@ public class MatrixV0<T> implements Matrix<T> {
   // +--------+
   /** 2D array of matrix values. */
   T[][] values;
+
   /** Default value. */
   final T defaultVal;
 
