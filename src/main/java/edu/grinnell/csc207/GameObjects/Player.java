@@ -1,5 +1,6 @@
 package edu.grinnell.csc207.GameObjects;
 
+import edu.grinnell.csc207.Game;
 import edu.grinnell.csc207.UI.KeyboardInput;
 import edu.grinnell.csc207.util.Vector2D;
 
@@ -23,9 +24,18 @@ public class Player extends GameObject {
     super(pos, chara, boardHeight, boardWidth);
   } // Player(Vector2D, Character, int, int)
 
+  /**
+   * Create a new player.
+   *
+   * @param pos The position.
+   * @param size The size.
+   * @param chara The character.
+   * @param boardHeight The height of the board.
+   * @param boardWidth The width of the board.
+   */
   public Player(Vector2D pos, Vector2D size, Character chara, int boardHeight, int boardWidth) {
     super(pos, size, chara, boardHeight, boardWidth);
-  }
+  } // Player(Vector2D, Vector2D, Character, int, int)
 
   /** The update method for the player piece. */
   @Override
@@ -33,32 +43,32 @@ public class Player extends GameObject {
     char move = KeyboardInput.getInstance().getInput();
     switch (move) {
       case 'w':
-        if (this.position.getY() - 1 < 0) {
+        if (this.getPosition().getY() - 1 < 0) {
           System.out.println("Invalid movement");
           return;
         } // if
-        this.position.incrementY(-1);
+        this.getPosition().incrementY(-1);
         break;
       case 'a':
-        if (this.position.getX() - 1 < 0) {
+        if (this.getPosition().getX() - 1 < 0) {
           System.out.println("Invalid movement");
           return;
         } // if
-        this.position.incrementX(-1);
+        this.getPosition().incrementX(-1);
         break;
       case 's':
-        if (this.position.getY() + 1 >= this.boardHeight) {
+        if (this.getPosition().getY() + 1 >= Game.getInstance().getBoard().height()) {
           System.out.println("Invalid movement");
           return;
         } // if
-        this.position.incrementY(1);
+        this.getPosition().incrementY(1);
         break;
       case 'd':
-        if (this.position.getX() + 1 >= this.boardWidth) {
+        if (this.getPosition().getX() + 1 >= Game.getInstance().getBoard().width()) {
           System.out.println("Invalid movement");
           return;
         } // if
-        this.position.incrementX(1);
+        this.getPosition().incrementX(1);
         break;
       default:
         break;

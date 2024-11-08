@@ -1,5 +1,6 @@
 package edu.grinnell.csc207.GameObjects;
 
+import edu.grinnell.csc207.Game;
 import edu.grinnell.csc207.util.Vector2D;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,31 +34,32 @@ public class Enemy extends GameObject {
   @Override
   public void update() {
     for (int i = 0; i < 2; ++i) {
-      this.move(target);
+      this.move();
     } // for
   } // update()
 
   /**
    * Moves the enemy to a different spot on the board depending on position of player.
    *
-   * @param target The target.
    */
-  private void move(GameObject target) {
+  private void move() {
     ArrayList<Vector2D> candidatePositions =
         new ArrayList<Vector2D>(
             Arrays.asList(
-                new Vector2D(this.position.getX() + 1, this.position.getY()),
-                new Vector2D(this.position.getX() - 1, this.position.getY()),
-                new Vector2D(this.position.getX(), this.position.getY() + 1),
-                new Vector2D(this.position.getX(), this.position.getY() - 1)));
+                new Vector2D(this.getPosition().getX() + 1, this.getPosition().getY()),
+                new Vector2D(this.getPosition().getX() - 1, this.getPosition().getY()),
+                new Vector2D(this.getPosition().getX(), this.getPosition().getY() + 1),
+                new Vector2D(this.getPosition().getX(), this.getPosition().getY() - 1)));
     int minManhattanDist = Integer.MAX_VALUE;
     ArrayList<Vector2D> nextPosition = new ArrayList<Vector2D>();
+    int bWidth = Game.getInstance().getBoard().width();
+    int bHeight = Game.getInstance().getBoard().height();
     for (Vector2D pos : candidatePositions) {
       if (pos.getX() >= 0
           && pos.getY() >= 0
-          && pos.getX() < this.boardWidth
-          && pos.getY() < this.boardHeight) {
-        int dist = pos.manhattanDist(target.position);
+          && pos.getX() < bWidth
+          && pos.getY() < bHeight) {
+        int dist = pos.manhattanDist(target.getPosition());
         if (dist < minManhattanDist) {
           minManhattanDist = dist;
           nextPosition = new ArrayList<Vector2D>();
@@ -68,6 +70,6 @@ public class Enemy extends GameObject {
       } // if
     } // for
     Random rand = new Random();
-    this.position = nextPosition.get(rand.nextInt(nextPosition.size()));
+    this.setPosition(nextPosition.get(rand.nextInt(nextPosition.size())));
   } // move(GameObject)
 } // class Enemy

@@ -7,19 +7,21 @@ package edu.grinnell.csc207.util;
  * @author Mina Bakrac
  */
 public class Vector2D {
+  /** X Coordinate. */
   private int x;
+  /** Y Coordinate. */
   private int y;
 
   /**
    * Create a new 2D vector.
    *
-   * @param x The x-coordinate.
-   * @param y The y-coordinate.
+   * @param initX The x-coordinate.
+   * @param initY The y-coordinate.
    */
-  public Vector2D(int x, int y) {
-    this.x = x;
-    this.y = y;
-  }
+  public Vector2D(int initX, int initY) {
+    this.x = initX;
+    this.y = initY;
+  } //Vector2D(int, int)
 
   /**
    * Get the X coordinate.

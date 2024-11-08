@@ -10,6 +10,7 @@ import java.util.Scanner;
  * @author Mina Bakrac
  */
 public class KeyboardInput {
+  /** Singleton instance of KeyboardInput. */
   private static KeyboardInput instance = new KeyboardInput();
 
   /**
@@ -21,8 +22,11 @@ public class KeyboardInput {
     return instance;
   } // getInstance()
 
+  /** Last Recorded Input. */
   private String lastRecordedInput;
+  /** PrintWriter. */
   private PrintWriter pen = new PrintWriter(System.out, true);
+  /** Scanner. */
   private Scanner scan = new Scanner(System.in);
 
   private KeyboardInput() {
@@ -36,8 +40,14 @@ public class KeyboardInput {
     lastRecordedInput = scan.nextLine();
   } // promptAndRecordInput()
 
+  /**
+   * Returns the first letter of the input.
+   * @return first letter of the last recorded input
+   */
   public Character getInput() {
-    if (!this.lastRecordedInput.isEmpty()) return this.lastRecordedInput.charAt(0);
+    if (!this.lastRecordedInput.isEmpty()) {
+      return this.lastRecordedInput.charAt(0);
+    } // if
     return Character.valueOf(' ');
   } // getInput()
 
@@ -48,5 +58,5 @@ public class KeyboardInput {
    */
   public String getFullInput() {
     return this.lastRecordedInput;
-  }
-}
+  } // getFullInput()
+} // KeyboardInput

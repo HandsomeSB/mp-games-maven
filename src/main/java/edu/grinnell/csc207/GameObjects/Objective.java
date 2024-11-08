@@ -33,7 +33,7 @@ public class Objective extends GameObject {
       Random rand = new Random();
       int objX = rand.nextInt(1, 7);
       int objY = rand.nextInt(0, 8);
-      this.position = new Vector2D(objX, objY);
+      this.setPosition(new Vector2D(objX, objY));
       Game game = Game.getInstance();
       game.setScore(game.getScore() + 1);
     } // if

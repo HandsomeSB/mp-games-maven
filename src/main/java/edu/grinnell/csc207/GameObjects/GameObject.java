@@ -10,49 +10,54 @@ import java.util.ArrayList;
  * @author Mina Bakrac
  */
 public class GameObject {
+  /** ArrayList of all game objects. */
   private static ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
-
-  public Vector2D position;
-  public Vector2D size;
-  public Character character;
-  public int boardHeight;
-  public int boardWidth;
+  /** Position of game object. */
+  private Vector2D position;
+  /** Size of game object. */
+  private Vector2D size;
+  /** The character to represent the game object. */
+  private Character character;
+  /** Height of the board. */
+  private int boardHeight;
+  /** Width of the board. */
+  private int boardWidth;
 
   /**
    * Create a new games object.
    *
    * @param pos The position.
-   * @param size The size.
+   * @param initSize The size.
    * @param chara The character.
-   * @param boardHeight The height of the board.
-   * @param boardWidth The width of the board.
+   * @param bHeight The height of the board.
+   * @param bWidth The width of the board.
    */
-  public GameObject(Vector2D pos, Vector2D size, Character chara, int boardHeight, int boardWidth) {
+  public GameObject(Vector2D pos, Vector2D initSize, Character chara, int bHeight, int bWidth) {
     this.position = pos;
-    this.size = size;
+    this.size = initSize;
     this.character = chara;
-    this.boardHeight = boardHeight;
-    this.boardWidth = boardWidth;
+    this.boardHeight = bHeight;
+    this.boardWidth = bWidth;
     GameObject.gameObjects.add(this);
   } // GameObject(Vector2D, Vector2D, Character, int, int)
 
   /**
    * @param pos The position.
    * @param chara The character.
-   * @param boardHeight The height of the board.
-   * @param boardWidth The width of the board.
+   * @param bHeight The height of the board.
+   * @param bWidth The width of the board.
    */
-  public GameObject(Vector2D pos, Character chara, int boardHeight, int boardWidth) {
-    this(pos, new Vector2D(1, 1), chara, boardHeight, boardWidth);
+  public GameObject(Vector2D pos, Character chara, int bHeight, int bWidth) {
+    this(pos, new Vector2D(1, 1), chara, bHeight, bWidth);
   } // GameObject(Vector2D, Character, int, int)
 
   /**
    * @param chara The character.
-   * @param boardHeight The height of the board.
-   * @param boardWidth The width of the board.
+   * @param bHeight The height of the board.
+   * @param bWidth The width of the board.
    */
-  public GameObject(Character chara, int boardHeight, int boardWidth) {
-    this(new Vector2D(0, 0), new Vector2D(1, 1), chara, boardHeight, boardWidth);
+  public GameObject(Character chara, int bHeight, int bWidth) {
+    this(new Vector2D(0, 0), new Vector2D(1, 1), chara, bHeight, bWidth);
   } // GameObject(Character, int, int)
 
   /**
@@ -78,6 +83,38 @@ public class GameObject {
 
   /** The standard update method for all game objects. */
   public void update() {} // update()
+
+  /**
+   * Get position.
+   * @return position of game object.
+   */
+  public Vector2D getPosition() { 
+    return this.position;
+  }
+
+  /**
+   * Set position.
+   * @param val new value. 
+   */
+  public void setPosition(Vector2D val) {
+    this.position = val;
+  }
+
+  /**
+   * Get size.
+   * @return size of game object.
+   */
+  public Vector2D getSize() { 
+    return this.size;
+  }
+
+  /**
+   * Get character. 
+   * @return character of game object. 
+   */
+  public Character getCharacter() { 
+    return this.character;
+  }
 
   /**
    * Our game objects.

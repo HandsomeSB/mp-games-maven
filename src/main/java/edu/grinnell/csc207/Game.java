@@ -67,9 +67,9 @@ public class Game {
   private void renderBoard() {
     this.board.fillRegion(0, 0, this.board.height(), this.board.width(), '.');
     for (GameObject go : this.gameObjects) {
-      for (int i = 0; i < go.size.getX(); ++i) {
-        for (int j = 0; j < go.size.getY(); ++j) {
-          this.board.set(go.position.getY() + i, go.position.getX() + j, go.character);
+      for (int i = 0; i < go.getSize().getX(); ++i) {
+        for (int j = 0; j < go.getSize().getY(); ++j) {
+          this.board.set(go.getPosition().getY() + i, go.getPosition().getX() + j, go.getCharacter());
         } // for
       } // for
     } // for
