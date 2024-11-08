@@ -10,7 +10,7 @@ import java.io.PrintWriter;
 public class Main {
     public static void display(PrintWriter pen) { 
         Matrix<Character> board = Game.getInstance().getBoard();
-        pen.println(Game.getInstance().getScore());
+        pen.println("Score: " + Game.getInstance().getScore());
         for(int i = 0; i < board.height(); ++i) { 
             for(int j = 0; j < board.width(); ++j) { 
                 pen.print(board.get(i, j));
