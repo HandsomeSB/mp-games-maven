@@ -1,5 +1,6 @@
 package edu.grinnell.csc207.GameObjects;
 
+import edu.grinnell.csc207.Game;
 import edu.grinnell.csc207.util.Vector2D;
 import java.util.ArrayList;
 
@@ -124,4 +125,16 @@ public class GameObject {
   public static ArrayList<GameObject> getGameObjects() {
     return GameObject.gameObjects;
   } // getGameObjects()
+
+    /**
+   * Return true if position is out of bound
+   * @param pos Position to check
+   * @param game Game instance
+   * @return true if position is out of bound, false if valid
+   */
+  public static boolean isOutOfBound(Vector2D pos, Game game) { 
+    int width = game.getBoard().width();
+    int height = game.getBoard().height();
+    return pos.getX() < 0 || pos.getX() >= width || pos.getY() < 0 || pos.getY() >= height;
+  } // isOutOfBound(Vector2D, Game)
 } // class GameObject

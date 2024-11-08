@@ -33,7 +33,7 @@ public class Enemy extends GameObject {
   /** Updates the position of the ememy. */
   @Override
   public void update() {
-    for (int i = 0; i < 2; ++i) {
+    for (int i = 0; i < 1; ++i) {
       this.move();
     } // for
   } // update()
@@ -52,13 +52,8 @@ public class Enemy extends GameObject {
                 new Vector2D(this.getPosition().getX(), this.getPosition().getY() - 1)));
     int minManhattanDist = Integer.MAX_VALUE;
     ArrayList<Vector2D> nextPosition = new ArrayList<Vector2D>();
-    int bWidth = Game.getInstance().getBoard().width();
-    int bHeight = Game.getInstance().getBoard().height();
     for (Vector2D pos : candidatePositions) {
-      if (pos.getX() >= 0
-          && pos.getY() >= 0
-          && pos.getX() < bWidth
-          && pos.getY() < bHeight) {
+      if (!GameObject.isOutOfBound(pos, Game.getInstance())) {
         int dist = pos.manhattanDist(target.getPosition());
         if (dist < minManhattanDist) {
           minManhattanDist = dist;
