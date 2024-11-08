@@ -8,6 +8,7 @@ import edu.grinnell.csc207.util.Vector2D;
 
 /**
  * The enemy character object in our game.
+ * 
  * @author Harrison Zhu
  * @author Mina Bakrac
  */
